@@ -1,13 +1,53 @@
-body {
+* {
+  font-family: "Rubik", sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.App {
+  width: 100%;
+  height: 100%;
+}
+.top-part {
+  height: 250px;
+  background: url("./images/pattern-bg.png");
+  background-size: cover;
+  text-align: center;
+}
+.app-title {
+  color: white;
+  font-weight: 700;
+  font-size: 32px;
+  padding: 30px 0;
+}
+.geo-form {
+  margin: auto;
+  width: 768px;
+}
+.geo-input {
+  width: 90%;
+  height: 50px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border: 0;
+  font-size: 17px;
+  padding-left: 20px;
+}
+.geo-btn {
+  width: 10%;
+  height: 50px;
+  background: black;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 50px;
+  color: white;
+  cursor: pointer;
 }
