@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SimpleMap from "./SimpleMap";
+import Map from "./Map";
 let placeholderValue = "Search for any IP address or domain";
 const GeoLocator = () => {
   const [address, setAddress] = useState("");
@@ -12,7 +12,7 @@ const GeoLocator = () => {
     const data = await res.json();
     console.log(data);
   };
-
+  console.log(process.env.REACT_APP_KEY);
   return (
     <div className="App">
       <div className="top-part">
@@ -31,7 +31,7 @@ const GeoLocator = () => {
         </div>
       </div>
       <div id="mapid">
-        <SimpleMap />
+        <Map />
       </div>
     </div>
   );
