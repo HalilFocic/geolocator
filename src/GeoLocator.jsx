@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-require("dotenv").config();
-
+import SimpleMap from "./SimpleMap";
 let placeholderValue = "Search for any IP address or domain";
 const GeoLocator = () => {
   const [address, setAddress] = useState("");
 
   // Send requrest to APi to retrieve data about the ip address that was entered
-  const searchAddress = () => {
-    alert(address);
+  const searchAddress = async () => {
+    const res = await fetch(
+      `https://geo.ipify.org/api/v1?apiKey=${process.env.REACT_APP_KEY}&ipAddress=${address}`
+    );
+    const data = await res.json();
+    console.log(data);
   };
 
   return (
@@ -27,7 +30,9 @@ const GeoLocator = () => {
           </button>
         </div>
       </div>
-      <div className="geo-map">{process.env.REACT_APP_KEY}</div>
+      <div id="mapid">
+        <SimpleMap />
+      </div>
     </div>
   );
 };
