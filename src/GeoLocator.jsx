@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+require("dotenv").config();
 
 let placeholderValue = "Search for any IP address or domain";
 const GeoLocator = () => {
@@ -26,7 +27,7 @@ const GeoLocator = () => {
           </button>
         </div>
       </div>
-      <div className="geo-map">Mapa</div>"
+      <div className="geo-map">{process.env.REACT_APP_KEY}</div>
     </div>
   );
 };
