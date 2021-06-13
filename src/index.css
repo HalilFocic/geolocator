@@ -41,7 +41,7 @@ body {
 .geo-btn {
   width: 10%;
   height: 50px;
-  background: black;
+  background: rgb(37, 37, 37);
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   border: 0;
