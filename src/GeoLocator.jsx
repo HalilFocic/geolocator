@@ -8,9 +8,15 @@ const GeoLocator = () => {
   const [viewport, setViewport] = useState({
     latitude: 45.4211,
     longitude: -75.6903,
-    width: "100vw",
-    height: "70vh",
+    width: "100%",
+    height: "65vh",
     zoom: 10,
+  });
+  const [result, setResult] = useState({
+    ipAdress: "",
+    location: "",
+    isp: "",
+    timezone: "",
   });
   const [markerData, setMarkerData] = useState({
     lat: 45.4211,
@@ -21,9 +27,16 @@ const GeoLocator = () => {
       `https://geo.ipify.org/api/v1?apiKey=${process.env.REACT_APP_ADRESS_KEY}&ipAddress=${address}`
     );
     const data = await res.json();
+    console.log(data);
     let newViewPort = { ...viewport };
     newViewPort.latitude = data.location.lat;
     newViewPort.longitude = data.location.lng;
+    setResult({
+      location: data.location.city,
+      isp: data.isp,
+      ipAdress: data.ip,
+      timezone: data.location.timezone,
+    });
     setMarkerData({ lat: data.location.lat, lng: data.location.lng });
     setHasSearched(true);
     setViewport(newViewPort);
@@ -45,7 +58,27 @@ const GeoLocator = () => {
           </button>
         </div>
       </div>
-      <div>
+      {result.ipAdress && (
+        <div className="result">
+          <div className="result-item">
+            <div className="result-title">IP ADRESS</div>
+            <div className="result-text">{result.ipAdress}</div>
+          </div>
+          <div className="result-item">
+            <div className="result-title">LOCATION</div>
+            <div className="result-text">{result.location}</div>
+          </div>
+          <div className="result-item">
+            <div className="result-title">TIMEZONE</div>
+            <div className="result-text">{result.timezone}</div>
+          </div>
+          <div className="result-item">
+            <div className="result-title">ISP</div>
+            <div className="result-text">{result.isp}</div>
+          </div>
+        </div>
+      )}
+      <div className="mapid">
         <ReactMapGL
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_KEY}
